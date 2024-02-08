@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Home Page% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <p>Welcome to the SWAPI website, select an option from below to where you want to go</p>
+  <p>For random star wars facts select the random fact button</p>
+  <hr>
+  <div>
+    <a href="{{ url_for('payments.home') }}">Payments Portal</a>
+  </div>
+{% endblock %}

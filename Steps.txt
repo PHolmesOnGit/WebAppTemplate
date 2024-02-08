@@ -1,0 +1,6 @@
+
+
+1. Build out the microservices and database
+2. Build out Flask web app to interact with the microservices
+3. Containerize the microservices and web app
+
