@@ -1,2 +1,24 @@
 {% extends 'base.html' %}
 
+{% block header %}
+  <h1>{% block title %}Payment History{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <br>
+  {% for payments in payment_history %}
+    <div class="about">{{ payments['username'] }} paid {{ payments['amount'] }} for {{ payments['message'] }}</div>
+    {% if not loop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+  <br>
+  <div>
+    <a class="action" href="{{ url_for('payments.home') }}">Return to payments home</a>
+  </div>
+  <br>
+  <div>
+    <a class="action" href="{{ url_for('home.index') }}">Return to website home</a>
+  </div>
+
+{% endblock %}

@@ -21,6 +21,7 @@ CREATE TABLE messaging (
 
 CREATE TABLE payments (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
+  username TEXT NOT NULL,
   amount INTEGER NOT NULL,
   message TEXT NOT NULL
 );
