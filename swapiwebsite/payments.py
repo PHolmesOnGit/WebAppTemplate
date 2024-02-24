@@ -15,7 +15,7 @@ def home():
 
 
 @bp.route('/makepayment', methods=('GET', 'POST'))
-def makepayment():
+def make_payment():
     if request.method == 'POST':
         amount = request.form['amount']
         message = request.form['message']
@@ -45,7 +45,7 @@ def makepayment():
 
 
 @bp.route('/paymenthistory', methods=('GET', 'POST'))
-def paymenthistory():
+def payment_history():
 
     db = get_db()
     payment_history = db.execute(

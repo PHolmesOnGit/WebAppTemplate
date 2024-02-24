@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %} Make a Payment {% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="receiver">Who do you want to send a message to?</label>
+    <input name="receiver" id="receiver" value="{{ request.form['reciever'] }}" required>
+    <label for="message">Message Content</label>
+    <textarea name="message" id="message">{{ request.form['message'] }}</textarea>
+    <input type="submit" value="Save">
+  </form>
+{% endblock %}

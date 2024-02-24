@@ -43,5 +43,7 @@ def create_app(test_config=None):
     from . import payments
     app.register_blueprint(payments.bp)
 
+    from . import messaging
+    app.register_blueprint(messaging.bp)
 
     return app

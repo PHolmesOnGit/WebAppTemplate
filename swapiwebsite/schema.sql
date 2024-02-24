@@ -12,11 +12,9 @@ CREATE TABLE user (
 
 CREATE TABLE messaging (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  sender_id INTEGER NOT NULL,
-  receiver_id INTEGER NOT NULL,
-  message TEXT NOT NULL,
-  FOREIGN KEY (sender_id) REFERENCES user (id),
-  FOREIGN KEY (receiver_id) REFERENCES user (id)
+  sender TEXT NOT NULL,
+  receiver TEXT NOT NULL,
+  message TEXT NOT NULL
 );
 
 CREATE TABLE payments (
