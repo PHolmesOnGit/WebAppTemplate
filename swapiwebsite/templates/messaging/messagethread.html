@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}People you've sent messages to{% endblock %}</h1>
+  <h1>{% block title %}Conversation with {{ receiver }}{% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
     <br>
-  {% for user in user_list %}
-    <div class="about">{{ user }}</div>
-    <div><a class="action" href="{{ url_for('messaging.message_thread') }}">View messages from {{ user }}</a></div>
+  {% for message in message_history %}
+    <div class="about"><h4>From: {{ message['sender'] }} || To: {{ message['receiver'] }} || At: Time</h4></div>
+    <div class="about">{{ message['message'] }}</div>
     {% if not loop.last %}
       <hr>
     {% endif %}

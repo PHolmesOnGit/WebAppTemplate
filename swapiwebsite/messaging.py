@@ -50,5 +50,26 @@ def message_history():
         "SELECT receiver FROM messaging WHERE sender = ?", (g.user['username'],)
     ).fetchall()
     print(receiver_list)
+    user_list = []
+    for user in receiver_list:
+        if user['receiver'] not in user_list:
+            user_list.append(user['receiver'])
+        else:
+            print("User already in list")
 
-    return render_template('messaging/receiverlist.html', receiver_list=receiver_list)
+    print(user_list)
+
+    return render_template('messaging/receiverlist.html', user_list=user_list)
+
+
+@bp.route('/messagethread', methods=('GET', 'POST'))
+def message_thread():
+
+    receiver = "ParkerHolmes"
+    db = get_db()
+    message_history = db.execute(
+        "SELECT * FROM messaging WHERE (sender = ? AND receiver = ?) OR (sender = ? AND receiver = ?)", (g.user['username'], receiver, receiver, g.user['username'])
+    ).fetchall()
+    print(message_history)
+
+    return render_template('messaging/messagethread.html', message_history=message_history, receiver=receiver)
