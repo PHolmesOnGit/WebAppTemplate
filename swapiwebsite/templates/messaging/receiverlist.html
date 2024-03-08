@@ -1,14 +1,13 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}People you've sent messages to{% endblock %}</h1>
+  <h1>{% block title %}Select a person to view messages{% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
     <br>
   {% for user in user_list %}
-    <div class="about">{{ user }}</div>
-    <div><a class="action" href="{{ url_for('messaging.message_thread') }}">View messages from {{ user }}</a></div>
+    <div><a class="action" href="{{ url_for('messaging.message_thread', textee=user) }}">{{ user }}</a></div>
     {% if not loop.last %}
       <hr>
     {% endif %}

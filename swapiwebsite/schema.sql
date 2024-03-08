@@ -14,14 +14,18 @@ CREATE TABLE messaging (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   sender TEXT NOT NULL,
   receiver TEXT NOT NULL,
-  message TEXT NOT NULL
+  message TEXT NOT NULL,
+  date TEXT NOT NULL,
+  time TEXT NOT NULL
 );
 
 CREATE TABLE payments (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   username TEXT NOT NULL,
   amount INTEGER NOT NULL,
-  message TEXT NOT NULL
+  message TEXT NOT NULL,
+  date TEXT NOT NULL,
+  time TEXT NOT NULL
 );
 
 CREATE TABLE test (

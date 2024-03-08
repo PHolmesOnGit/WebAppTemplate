@@ -5,6 +5,8 @@ from flask import (
 
 from swapiwebsite.db import get_db
 
+import datetime
+
 bp = Blueprint('payments', __name__, url_prefix='/payments')
 
 
@@ -19,6 +21,8 @@ def make_payment():
     if request.method == 'POST':
         amount = request.form['amount']
         message = request.form['message']
+        date = datetime.datetime.now().strftime("%Y-%m-%d")
+        time = datetime.datetime.now().strftime("%H:%M")
         error = None
 
 
@@ -33,9 +37,9 @@ def make_payment():
             username = g.user['username']
             db = get_db()
             db.execute(
-                "INSERT INTO payments (username, amount, message) "
-                "VALUES (?, ?, ?)",
-                (username, amount, message),
+                "INSERT INTO payments (username, amount, message, date, time) "
+                "VALUES (?, ?, ?, ?, ?)",
+                (username, amount, message, date, time),
             )
             db.commit()
             return redirect(url_for("payments.home"))

@@ -3,7 +3,7 @@ from flask import (
 )
 
 from swapiwebsite.db import get_db
-
+import datetime
 bp = Blueprint('messaging', __name__, url_prefix='/messaging')
 
 
@@ -29,11 +29,13 @@ def send_message():
             flash(error)
         else:
             sender = g.user['username']
+            date = datetime.datetime.now().strftime("%Y-%m-%d")
+            time = datetime.datetime.now().strftime("%H:%M")
             db = get_db()
             db.execute(
-                "INSERT INTO messaging (sender, receiver, message) "
-                "VALUES (?, ?, ?)",
-                (sender, receiver, message),
+                "INSERT INTO messaging (sender, receiver, message, date, time) "
+                "VALUES (?, ?, ?, ?, ?)",
+                (sender, receiver, message, date, time),
             )
             db.commit()
             return redirect(url_for("messaging.home"))
@@ -62,10 +64,10 @@ def message_history():
     return render_template('messaging/receiverlist.html', user_list=user_list)
 
 
-@bp.route('/messagethread', methods=('GET', 'POST'))
-def message_thread():
+@bp.route('/messagethread/<string:textee>', methods=('GET', 'POST'))
+def message_thread(textee):
 
-    receiver = "ParkerHolmes"
+    receiver = textee
     db = get_db()
     message_history = db.execute(
         "SELECT * FROM messaging WHERE (sender = ? AND receiver = ?) OR (sender = ? AND receiver = ?)", (g.user['username'], receiver, receiver, g.user['username'])

@@ -7,7 +7,7 @@
 {% block content %}
     <br>
   {% for message in message_history %}
-    <div class="about"><h4>From: {{ message['sender'] }} || To: {{ message['receiver'] }} || At: Time</h4></div>
+    <div class="about"><h4>From: {{ message['sender'] }} || To: {{ message['receiver'] }} || At: {{ message['date'] }} {{ message['time'] }}</h4></div>
     <div class="about">{{ message['message'] }}</div>
     {% if not loop.last %}
       <hr>

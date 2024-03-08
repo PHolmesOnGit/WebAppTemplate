@@ -5,18 +5,7 @@
 {% endblock %}
 
 {% block content %}
-  <p>Welcome to the SWAPI website, select an option from below to where you want to go</p>
-  <hr>
-  <p>Random Star Wars character info:</p>
-  <p>Name: {{ data['name'].title() }} </p>
-  <p>Height: {{ data['height'].title() }} </p>
-  <p>Mass: {{ data['mass'].title() }} </p>
-  <p>Hair color: {{ data['hair_color'].title() }} </p>
-  <p>Skin color: {{ data['skin_color'].title() }}</p>
-  <p>Eye color: {{ data['eye_color'].title() }} </p>
-  <p>Birth year: {{ data['birth_year'].title() }} </p>
-  <p>Gender: {{ data['gender'].title() }}</p>
-
+  <p>Welcome to the website, select an option from below to where you want to go</p>
   <hr>
   <div>
     <a class="action" href="{{ url_for('payments.home') }}">Payments Portal</a>

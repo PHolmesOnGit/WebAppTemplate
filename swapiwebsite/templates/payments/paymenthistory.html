@@ -7,7 +7,7 @@
 {% block content %}
     <br>
   {% for payments in payment_history %}
-    <div class="about">{{ payments['username'] }} paid {{ payments['amount'] }} for {{ payments['message'] }}</div>
+    <div class="about">{{ payments['username'] }} paid {{ payments['amount'] }} for {{ payments['message'] }} at {{ payments['date'] }} {{ payments['time'] }}</div>
     {% if not loop.last %}
       <hr>
     {% endif %}
